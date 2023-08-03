@@ -1,0 +1,13 @@
+.header__link-register{
+text-decoration: none;
+color: #fff;
+font-size: 18px;
+font-weight: 400px;
+transition: .2s;
+line-height: 22px;
+}
+
+.header__link-register:hover {
+	cursor: pointer;
+	opacity: .6;
+}

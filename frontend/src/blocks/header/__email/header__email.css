@@ -1,0 +1,17 @@
+.header__email{
+	font-family: 'Inter', sans-serif;
+	color: #fff;
+	font-size: 18px;
+	font-weight: 500px;
+	line-height: 22px;
+	margin-right: 24px; 
+	}
+
+	@media (max-width: 920px) {
+		.header__email{
+			display: none;
+			margin: 0px;
+			font-size: 18px;
+			padding-bottom: 18px;
+		}
+	} 
