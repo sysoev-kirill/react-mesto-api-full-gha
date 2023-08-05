@@ -6,9 +6,9 @@ const app = express();
 
 // eslint-disable-next-line import/no-extraneous-dependencies
 const { celebrate, Joi, errors } = require('celebrate');
-const { requestLogger, errorLogger } = require('./middlewares/logger'); 
+const { requestLogger, errorLogger } = require('./middlewares/logger');
 
-const regexUrl = /^(http:\/\/|https:\/\/w*\w)/;
+const regexUrl = /https?:\/\/(www\.)?[-\w@:%.+~#=]{1,256}\.[a-z0-9()]{1,6}\b([-\w()@:%.+~#=/?&]*)/i;
 
 
 const usersRoutes = require('./routes/users');
