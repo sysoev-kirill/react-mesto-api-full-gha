@@ -11,9 +11,13 @@ const cors = (req, res, next) => {
 	// проверяем, что источник запроса есть среди разрешённых
 	const { method } = req;
 	const requestHeaders = req.headers['access-control-request-headers'];
-	if (allowedCors.includes(origin)) {
-		res.header('Access-Control-Allow-Origin', origin);
-    res.header('Access-Control-Allow-Credentials', true);
+	// if (allowedCors.includes(origin)) {
+	// 	res.header('Access-Control-Allow-Origin', origin);
+  //   res.header('Access-Control-Allow-Origin', "*");
+
+	// }
+  if (allowedCors.includes(origin)) {
+    res.header('Access-Control-Allow-Origin', "*");
 	}
 	if (method === 'OPTIONS') {
 		// разрешаем кросс-доменные запросы с этими заголовками
