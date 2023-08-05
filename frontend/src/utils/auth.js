@@ -48,7 +48,7 @@ class Auth {
 export const auth = new Auth({
 	// baseUrl: 'https://auth.nomoreparties.co',
 	// baseUrl: 'http://localhost:3001',
-	baseUrl: 'http://api.sysoev.nomoreparties.co',
+	baseUrl: 'https://api.sysoev.nomoreparties.co',
 	headers: {
 		'Content-Type': 'application/json'
 	}

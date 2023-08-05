@@ -2,7 +2,7 @@ class Api {
 	constructor({ baseUrl, headers }) {
 		this._baseUrl = baseUrl;
 		this._headers = headers;
-		
+
 	}
 	// setToken(token) {
 	// 	this._headers.authorization = `Bearer ${token}`;
@@ -86,7 +86,7 @@ class Api {
 export const api = new Api({
 	// baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-64',
 	// baseUrl: 'http://localhost:3001',
-	baseUrl: 'http://api.sysoev.nomoreparties.co',
+	baseUrl: 'https://api.sysoev.nomoreparties.co',
 	headers: {
 		Authorization: `Bearer ${localStorage.getItem("token") || ""}`,
 		'Content-Type': 'application/json'
