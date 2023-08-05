@@ -1,14 +1,14 @@
 const allowedCors = [
-	'https://praktikum.tk',
-	'http://praktikum.tk',
-	'http://localhost:3000',
-  'https://sysoev.nomoreparties.co'
+  'https://sysoev.nomoreparties.co',
+  'http://sysoev.nomoreparties.co',
+  'http://localhost:3000',
 ];
 const DEFAULT_ALLOWED_METHODS = "GET,HEAD,PUT,PATCH,POST,DELETE";
 
 const cors = (req, res, next) => {
 	const { origin } = req.headers; // Сохраняем источник запроса в переменную origin
 	// проверяем, что источник запроса есть среди разрешённых
+  console.log(origin);
 	const { method } = req;
 	const requestHeaders = req.headers['access-control-request-headers'];
 	if (allowedCors.includes(origin)) {
