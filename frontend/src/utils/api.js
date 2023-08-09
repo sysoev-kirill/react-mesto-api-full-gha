@@ -88,7 +88,7 @@ export const api = new Api({
 	// baseUrl: 'http://localhost:3001',
 	baseUrl: 'https://api.sysoev.nomoreparties.co',
 	headers: {
-		Authorization: `Bearer ${localStorage.getItem("token") || ""}`,
+		Authorization: `Bearer ${localStorage.getItem("token")}`,
 		'Content-Type': 'application/json'
 	}
 });

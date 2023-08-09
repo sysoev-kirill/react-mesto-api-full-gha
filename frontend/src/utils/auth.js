@@ -9,6 +9,7 @@ class Auth {
 	}
 
 	register(email, password) {
+
 		return fetch(`${this._baseUrl}/signup`, {
 			method: 'POST',
 			headers: this._headers,
@@ -50,6 +51,6 @@ export const auth = new Auth({
 	// baseUrl: 'http://localhost:3001',
 	baseUrl: 'https://api.sysoev.nomoreparties.co',
 	headers: {
-		'Content-Type': 'application/json'
+		'Content-Type': 'application/json',
 	}
 });

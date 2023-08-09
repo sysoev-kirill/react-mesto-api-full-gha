@@ -16,13 +16,13 @@ const сardsRoutes = require('./routes/cards');
 const { login, createUser } = require('./controllers/users');
 const isAuthorized = require('./middlewares/auth');
 const NotFoundError = require('./error/notFoundError');
-const { cors } = require('./middlewares/cors');
-
+const cors  = require('./middlewares/cors');
 mongoose.connect('mongodb://localhost:27017/mestodb', {
   family: 4,
 });
 
 app.use(cors);
+
 app.use(express.json());
 app.use(bodyParser.json());
 
