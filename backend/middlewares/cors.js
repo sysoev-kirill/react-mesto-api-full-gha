@@ -2,10 +2,7 @@ const allowedCors = [
   'https://sysoev.nomoreparties.co',
   'http://sysoev.nomoreparties.co',
   'http://localhost:3000',
-  'https://localhost:3000',
   'http://localhost:3001',
-  'https://localhost:3001',
-
 ];
 
 const cors = (req, res, next) => {
