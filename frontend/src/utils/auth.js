@@ -51,6 +51,7 @@ export const auth = new Auth({
 	// baseUrl: 'http://localhost:3001',
 	baseUrl: 'https://api.sysoev.nomoreparties.co',
 	headers: {
+    'Accept': 'application/json',
 		'Content-Type': 'application/json',
 	}
 });

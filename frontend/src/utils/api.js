@@ -4,9 +4,6 @@ class Api {
 		this._headers = headers;
 
 	}
-	// setToken(token) {
-	// 	this._headers.authorization = `Bearer ${token}`;
-	// }
 
 	_onRes(response) {
 		return response.ok ? response.json() : Promise.reject({ ...response, message: "Ошибка на стороне сервиса" });

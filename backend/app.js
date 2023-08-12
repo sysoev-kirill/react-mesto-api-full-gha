@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
@@ -18,12 +19,13 @@ const isAuthorized = require('./middlewares/auth');
 const NotFoundError = require('./error/notFoundError');
 const cors  = require('./middlewares/cors');
 
-mongoose.connect('mongodb://localhost:27017/mestodb', {
-  family: 4,
-});
-// mongoose.connect('mongodb://127.0.0.1:27017/mestodb', {
+const { PORT = 3000 } = process.env;
+// mongoose.connect('mongodb://localhost:27017/mestodb', {
 //   family: 4,
 // });
+mongoose.connect('mongodb://127.0.0.1:27017/mestodb', {
+  family: 4,
+});
 
 app.use(cors);
 
@@ -77,6 +79,6 @@ app.use((err, req, res, next) => {
   next();
 });
 
-app.listen(3001, () => {
+app.listen(PORT, () => {
   console.log('Сервер запущен');
 });
