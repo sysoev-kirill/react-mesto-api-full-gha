@@ -163,9 +163,9 @@ function App() {
   function handleLogin({ email, password }) {
     auth.authorize(email, password)
       .then((res) => {
-        tokenCheck();
-        localStorage.setItem('token', res);
         setLoggedIn(true);
+        localStorage.setItem('token', res);
+        tokenCheck();
         navigate("/", { replace: true })
       })
       .catch(err => {
