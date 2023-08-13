@@ -9,7 +9,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 51.250.66.87
+IP 51.250.66.87
 
 Frontend https://sysoev.nomoreparties.co
 
