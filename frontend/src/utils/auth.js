@@ -9,7 +9,6 @@ class Auth {
 	}
 
 	register(email, password) {
-
 		return fetch(`${this._baseUrl}/signup`, {
 			method: 'POST',
 			headers: this._headers,
@@ -26,12 +25,13 @@ class Auth {
 				password
 			})
 		}).then(this._onRes)
-			.then((data) => {
-				if (data.token) {
-					localStorage.setItem('token', data.token)
-					return data.token
-				}
-			})
+      .then((data)=> {
+        if(data.token) {
+          localStorage.setItem('token', data.token)
+          return data.token
+        }
+      })
+
 	}
 
 	checkToken(token) {
@@ -48,7 +48,7 @@ class Auth {
 
 export const auth = new Auth({
 	// baseUrl: 'https://auth.nomoreparties.co',
-	// baseUrl: 'http://localhost:3001',
+	// baseUrl: 'http://localhost:3000',
 	baseUrl: 'https://api.sysoev.nomoreparties.co',
 	headers: {
     'Accept': 'application/json',
