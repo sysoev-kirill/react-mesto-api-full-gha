@@ -165,6 +165,7 @@ function App() {
       .then((res) => {
         setLoggedIn(true);
         localStorage.setItem('token', res);
+        setEmail(res.email);
         tokenCheck();
         navigate("/", { replace: true })
       })
