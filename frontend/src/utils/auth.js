@@ -25,13 +25,6 @@ class Auth {
 				password
 			})
 		}).then(this._onRes)
-      .then((data)=> {
-        if(data.token) {
-          localStorage.setItem('token', data.token)
-          return data.token
-        }
-      })
-
 	}
 
 	checkToken(token) {

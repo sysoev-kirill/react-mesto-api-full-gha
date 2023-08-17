@@ -37,26 +37,26 @@ function App() {
   const [isInfoTooltipOpen, setIsInfoTooltipOpen] = useState(false);
   const navigate = useNavigate();
 
+
   useEffect(() => {
-    if (loggedIn) {
-      api.getUserInfo()
-        .then((res) => (
-          setCurrentUser(res)
-        ))
-        .catch((err) => console.log(err))
-    }
-  }, [loggedIn])
+    tokenCheck();
+  }, [])
 
 
   useEffect(() => {
     if (loggedIn) {
-      api.getInitialCards()
-        .then((res) => (
-          setCards(res.data)
-        ))
-        .catch((err) => console.log(err))
-    }
-  }, [loggedIn])
+      Promise.all([api.getUserInfo(), api.getInitialCards()])
+    .then(([currentUser, cards]) => {
+      setCurrentUser(currentUser);
+      setCards(cards.data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  }
+
+},[loggedIn]);
+
 
   function handleEscClose(event) {
     if (event.key === 'Escape') {
@@ -122,6 +122,7 @@ function App() {
       .catch((err) => console.log(err))
   }
 
+
   function handleUpdateAvatar(data) {
     api.editAvatarUser(data)
       .then((res) => {
@@ -130,6 +131,7 @@ function App() {
       })
       .catch((err) => console.log(err))
   }
+
 
   function handleAddPlaceSubmit(data) {
     api.addNewCard(data)
@@ -160,32 +162,32 @@ function App() {
       .finally(() => setIsInfoTooltipOpen(true))
   }
 
-  function handleLogin({ email, password }) {
-    auth.authorize(email, password)
+
+
+  function handleLogin({email, password}) {
+    auth.authorize(email, password )
       .then((res) => {
-        setLoggedIn(true);
-        localStorage.setItem('token', res);
-        setEmail(res.email);
+        localStorage.setItem('token', res.token);
         tokenCheck();
+        setLoggedIn(true);
         navigate("/", { replace: true })
-      })
+    })
       .catch(err => {
         console.log(err);
       });
   }
 
-  useEffect(() => {
-    tokenCheck();
-  }, [])
 
   function tokenCheck() {
     const token = localStorage.getItem('token');
     if (token) {
       auth.checkToken(token)
         .then((res) => {
+          setCurrentUser(res);
+          setEmail(res.email);
           setLoggedIn(true);
-          setEmail(res.email)
-          navigate('/', { replace: true })
+          navigate('/', { replace: true });
+          return res;
         })
         .catch(err => {
           console.log(err);
